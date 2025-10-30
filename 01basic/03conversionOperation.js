@@ -20,7 +20,7 @@ console.log(typeof stringNumber);
 //true ->1 ;false ->1
 
 
-//-------------------------OPERATIONS-----------------------------
+//OPERATIONS
 
 let value= 27
 let negvalue=-value
@@ -64,12 +64,12 @@ console.log(num1); //101
 let num1 = 100;
 const num3=num1++
 console.log(num1); //101    num is increased after its original value 100 is used
-console.log(num3); //101num3 gets original value of num1,after which num1 is incremented
+console.log(num3); //101 num3 gets original value of num1,after which num1 is incremented
 
 
 function sum(a, b) {
     return a+b;
   }
-  
+
   console.log(sum(1, 3));
   console.log(sum(2, 5));

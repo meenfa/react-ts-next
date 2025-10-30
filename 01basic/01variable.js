@@ -7,7 +7,7 @@ const accountId = 111;
 
 let accountEmail="hello@email.com";
 var accountPass="12345";
-accountCity="Jhapa";
+let accountCity="Jhapa";
 
 // accountId= 2; => not allowed
 accountEmail="second@email.com";
