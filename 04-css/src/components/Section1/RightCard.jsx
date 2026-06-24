@@ -1,15 +1,19 @@
-import React from 'react'
-import 'remixicon/fonts/remixicon.css'
-import RightCardContent from './RightCardContent'
+import React from "react";
+import "remixicon/fonts/remixicon.css";
+import RightCardContent from "./RightCardContent";
 const RightCard = (props) => {
   return (
-    <div className='h-full w-60 overflow-hidden relative rounded-2xl'>
-        <img className='h-full w-full object-cover' src={props.img} alt="" />
-        
-        <RightCardContent tag={props.tag} id={props.id} intro={props.intro} />
-    
-    </div>
-  )
-}
+    <div className="h-full w-60 shrink-0 overflow-hidden relative rounded-2xl">
+      <img className="h-full w-full object-cover" src={props.img} alt="" />
 
-export default RightCard
+      <RightCardContent
+        color={props.color}
+        tag={props.tag}
+        id={props.id}
+        intro={props.intro}
+      />
+    </div>
+  );
+};
+
+export default RightCard;
