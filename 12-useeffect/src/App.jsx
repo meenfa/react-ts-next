@@ -20,6 +20,8 @@ const App = () => {
       // console.log("use effect is running......");
     },
     [a],
+    // this [a] is the dependencies
+    // al;so []-> empty array = runs only once when the page loads
   );
   return (
     <div>
