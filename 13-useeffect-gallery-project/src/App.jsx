@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import ImageCard from "./components/ImageCard";
 const App = () => {
   const [userData, setUserData] = useState([]);
+  const [index, setIndex] = useState(1);
   useEffect(() => {
     getData();
 
     // return () => {
     //   second;
     // };
-  }, []);
+  }, [index]);
   // [] is empty array,it means "run only once when component mounts"
 
   // axios.post - to create new data
@@ -16,7 +18,7 @@ const App = () => {
   const getData = async () => {
     try {
       const response = await axios.get(
-        "https://picsum.photos/v2/list?page=3&limit=40",
+        `https://picsum.photos/v2/list?page=${index}&limit=8`,
       );
       setUserData(response.data);
       console.log(response.data);
@@ -37,6 +39,7 @@ const App = () => {
   // }
   return (
     <div className="px-4 py-2 min-h-screen items-center justify-center">
+      <h1 className="fixed">{index}</h1>
       {/* <button
         onClick={getData}
         className="bg-[#F5F5F5] active:scale-95 text-black mb-4 px-4 py-2 rounded cursor-pointer"
@@ -56,25 +59,35 @@ const App = () => {
           // }
 
           userData.map((elem, idx) => (
-            <a href={elem.url}>
-              <div
-                key={idx}
-                className="flex flex-col items-center p-4 rounded-lg justify-center"
-              >
-                <img
-                  src={elem.download_url}
-                  alt={`image ${idx + 1}`}
-                  className="w-full h-48 rounded-lg object-cover"
-                />
-                <h2 className="text-black mt-4 text-xl text-center">
-                  {elem.author}
-                </h2>
-              </div>
-            </a>
+            <ImageCard key={idx} elem={elem} idx={idx} />
           ))
         ) : (
           <p className="text-2xl">No Data Available</p>
         )}
+      </div>
+
+      <div className="flex flex-wrap items-center justify-center gap-4">
+        <button
+          onClick={() => {
+            console.log("prev btn is clicked");
+            if (index > 1) {
+              setIndex(index - 1);
+            }
+          }}
+          className="bg-yellow-300 px-4 py-2 rounded cursor-pointer"
+        >
+          Prev
+        </button>
+        <h2>Page {index}</h2>
+        <button
+          onClick={() => {
+            console.log("next btn is clicked");
+            setIndex(index + 1);
+          }}
+          className="bg-yellow-300 px-4 py-2 rounded cursor-pointer"
+        >
+          Next
+        </button>
       </div>
     </div>
   );
