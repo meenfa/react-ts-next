@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { products } from "../../data/product";
 
 const Laptop = () => {
+  //  creates a new array containing only the items
+  // from the products list that are laptops.
   const laptops = products.filter((p) => p.category === "laptop");
   return (
     <div>
