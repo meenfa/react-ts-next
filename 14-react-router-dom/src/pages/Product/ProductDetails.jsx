@@ -1,12 +1,6 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-
-const products = [
-  { id: "1", name: "Lenovo", price: "12345", category: "laptop" },
-  { id: "2", name: "Dell ", price: "12345", category: "laptop" },
-  { id: "3", name: "iPhone", price: "12345", category: "mobile" },
-  { id: "4", name: "Samsung Galaxy", price: "12345", category: "mobile" },
-];
+import { products } from "../../data/product";
 
 const ProductDetails = () => {
   // 1 Get the dynamic 'id' from the URL
