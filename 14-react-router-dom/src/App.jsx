@@ -7,9 +7,10 @@ import Navbar from "./components/Navbar";
 import Product from "./pages/Product";
 import Laptop from "./pages/Product/Laptop";
 import Mobile from "./pages/Product/Mobile";
+import ProductDetails from "./pages/Product/ProductDetails";
 const App = () => {
   return (
-    <div>
+    <div className="px-8">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="laptop" element={<Laptop />} />
           <Route path="mobile" element={<Mobile />} />
         </Route>
+        <Route path="/product/:id" element={<ProductDetails />} />
       </Routes>
     </div>
   );
