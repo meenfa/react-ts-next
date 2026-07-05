@@ -8,6 +8,7 @@ import Product from "./pages/Product";
 import Laptop from "./pages/Product/Laptop";
 import Mobile from "./pages/Product/Mobile";
 import ProductDetails from "./pages/Product/ProductDetails";
+import PageNotFound from "./pages/PageNotFound";
 const App = () => {
   return (
     <div className="px-8">
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="mobile" element={<Mobile />} />
         </Route>
         <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   );
