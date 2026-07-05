@@ -21,9 +21,9 @@ const ProductDetails = () => {
 
   return (
     <div>
-      <span>{product.category}</span>
-
-      <h1>{product.name}</h1>
+      <h1>
+        {product.name}(<span>{product.category}</span>)
+      </h1>
 
       <div>
         <p>

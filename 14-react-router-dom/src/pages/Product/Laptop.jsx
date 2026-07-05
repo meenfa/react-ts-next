@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import { products } from "../../data/product";
 
 const Laptop = () => {
-  //  creates a new array containing only the items
-  // from the products list that are laptops.
+  // Filter only laptops from the shared data
   const laptops = products.filter((p) => p.category === "laptop");
   return (
     <div>
@@ -12,7 +11,7 @@ const Laptop = () => {
       <ul>
         {laptops.map((laptop) => (
           <li key={laptop.id}>
-            <Link to="/product/${laptop.id}">{laptop.name}</Link>
+            <Link to={`/product/${laptop.id}`}>{laptop.name}</Link>
           </li>
         ))}
       </ul>
