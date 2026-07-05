@@ -45,7 +45,7 @@ const ProductDetails = () => {
       </div>
 
       <div>
-        <Link to="/product">← Back to All Products</Link>
+        <Link to="/product">Back to All Products</Link>
       </div>
     </div>
   );
