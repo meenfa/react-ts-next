@@ -108,3 +108,14 @@ const circumf = function (r) {
 
 console.log(`Area is ${calculate(radius2,a)}`);
 console.log(`Circumference is ${calculate(radius2,circumf)}`);
+
+
+// arrow function
+const multiply = (a,b)=> a*b 
+
+console.log(multiply(2,4));
+
+const divide = (c,d) =>{
+    return c/d;
+}
+console.log(divide(8,2));
