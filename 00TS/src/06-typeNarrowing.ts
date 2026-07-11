@@ -8,7 +8,7 @@ function getChiya(kind: string | number){
     return `chiyaOrder:${kind}`
 }
 
-function serveChiya(msg ?:string){
+function serveChia(msg ?:string){
     if(msg){
         return `serving ${msg}`;
     }
@@ -82,7 +82,7 @@ type KaloChiya = {
 
 type chiya = MasalaChiya | GingerChiya | KaloChiya
 
-function makeChiya(order:chiya){
+function banamChiya(order:chiya){
     switch (order.type) {
         case "masala":
             return `Masala Chiya`
