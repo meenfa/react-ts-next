@@ -28,4 +28,40 @@ if(typeof newvalue === "string"){
 }
 
 // try catch block
+try {
+    
+} catch (error) {
+    if(error instanceof Error){
+        
+        console.log(error.message);
+    }
+    console.log("error is",error);
+       
+}
 
+
+const data:unknown = "Chai aur code"
+const strData:string= data as string
+
+// never data type
+type Role = "admin"| "user"
+
+function redirectBasedOnRole(role:Role):void {
+    // data type is role and returns Void cause not know what will retutn or Idc abt the value iam returning
+    if(role === "admin"){
+        console.log("Admin dashboard");
+        return   
+    }
+    if(role === "user"){
+        console.log("User dashboard");
+        return   
+    }
+    role;
+}
+
+function neverReturn():never {
+    while (true) {
+        
+    }
+    
+}
