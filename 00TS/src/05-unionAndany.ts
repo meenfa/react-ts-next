@@ -18,8 +18,6 @@ for(let order of orders){
         break
 }  
 }
-
 console.log(currentorder);
-
 
 
