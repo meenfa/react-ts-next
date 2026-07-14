@@ -10,7 +10,7 @@ type chiyaOrder={
 
 // type:string; sugar:number; strong:boolean
 // every data have signature as above
-function makeChiya(order:chiyaOrder) {
+function makeChiya2(order:chiyaOrder) {
     console.log(order);
     
 }

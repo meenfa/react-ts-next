@@ -15,7 +15,7 @@ function fail(msg: string): never {
 }
 
 // Donot use any-> try to ignore as much as possible
-
 const valueAny: any = JSON.parse('{"x":1}');
 
-valueAny.notThere.toFixed(2); //thiscompiles butcan break/explode at runtime
+valueAny.notThere.toFixed(2); 
+//thiscompiles butcan break/explode at runtime
