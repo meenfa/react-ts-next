@@ -1,0 +1,17 @@
+import { type PropsWithChildren, type ReactNode } from "react";
+
+interface CardProps extends PropsWithChildren {
+    title: string;
+    children: ReactNode;
+    footer?: ReactNode;
+}
+
+export function Card({ title, children, footer }: CardProps) {
+    return (
+        <section>
+            <h2>{title}</h2>
+            <div>{children}</div>
+            {footer && <footer>{footer}</footer>}
+        </section>
+    );
+}
