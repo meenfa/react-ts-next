@@ -1,11 +1,13 @@
 import { products } from "@/lib/productsData";
 import Link from "next/link";
+import SearchInput from "../components/SearchInput";
 
 interface ProductsPageProps {
   searchParams: {
     // search params acts aas async so handles as promise
     category?: string;
     sort?: string;
+    search?: string;
   };
 }
 
@@ -13,9 +15,16 @@ export default async function ProductsPage({
   searchParams,
 }: ProductsPageProps) {
   // 1.awaits the search params
-  const { category, sort } = await searchParams;
+  const { category, sort, search } = await searchParams;
 
-  let filtered = products;
+  // 1. make a fresh copy of the data
+  let filtered = [...products];
+
+  if (search) {
+    filtered = filtered.filter((product) =>
+      product.name.toLowerCase().includes(search.toLowerCase()),
+    );
+  }
 
   if (category) {
     filtered = filtered.filter((product) => product.category === category);
@@ -26,6 +35,7 @@ export default async function ProductsPage({
   return (
     <div className="flex flex-col">
       <h2 className="text-2xl font-black">Product Page</h2>
+      <SearchInput />
       <div className="flex gap-2 cursor-pointer">
         <Link href="/products">All Products</Link> |
         <Link href="/products?category=react">React</Link> |
@@ -43,9 +53,9 @@ export default async function ProductsPage({
         {filtered.length > 0 ? (
           filtered.map((e) => (
             <Link href={`/products/${e.id}`} key={e.id}>
-            <div className="p-2 border w-48 rounded-lg" >
-              <h2 className="text-black cursor-pointer">{e.name}</h2>
-            </div>
+              <div className="p-2 border w-48 rounded-lg">
+                <h2 className="text-black cursor-pointer">{e.name}</h2>
+              </div>
             </Link>
           ))
         ) : (
