@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ServerInfo from "./components/ServerInfo";
+import next from "next";
 
 //
 interface Album {
@@ -13,8 +14,10 @@ export default async function Home() {
   // .then(response => response.json())
 
   const response = await fetch("https://jsonplaceholder.typicode.com/albums",{
-    // to make data dynamic
+    // to make data dynamic rendering
     cache:"no-store"
+    //or 
+    // next:{revalidate: 10}
   });
   const data: Album[] = await response.json();
   return (
