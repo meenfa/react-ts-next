@@ -12,6 +12,7 @@ export default function Header() {
         <Link href="/contact">Contact</Link>
         <Link href="/blog">Blogs</Link>
         <Link href="/dashboard">Dashboard</Link>
+        <Link href="/products">Products</Link>
       </div>
     </header>
   );
