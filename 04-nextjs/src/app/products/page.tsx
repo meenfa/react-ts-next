@@ -14,6 +14,9 @@ interface ProductsPageProps {
 export default async function ProductsPage({
   searchParams,
 }: ProductsPageProps) {
+  //  throw new Error("This is a test error to see the error.tsx page!");
+  // fake delay to show loading.tsx, itWait for 2 seconds to simulate a slow database/API
+   await new Promise((resolve) => setTimeout(resolve, 200));
   // 1.awaits the search params
   const { category, sort, search } = await searchParams;
 
@@ -46,6 +49,7 @@ export default async function ProductsPage({
       <p>
         Current filter: <b>{category || "ALL"}</b>
         Sort: <b>{sort || "Default"}</b>
+        
       </p>
 
       {/* product data */}

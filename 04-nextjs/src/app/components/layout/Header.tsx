@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <header className="px-8 py-2 flex justify-between items-center text-black ">
        <div className="text-xl font-bold text-gray-900">
-        <Link href="/"><h1>Logo</h1> </Link>
+        <Link href="/"><h1>Next JS</h1> </Link>
       </div>
       <div className="flex gap-4">
         <Link href="/">Home</Link>
