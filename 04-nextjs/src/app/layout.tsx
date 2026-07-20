@@ -11,10 +11,10 @@ const inter = Inter({
   display: "swap",
 });
 
-// seo with metadata api
 export const metadata: Metadata = {
+  metadataBase: new URL("https://meenfa.tech"),
   title: {
-    template: "%s | Learn Next.js", // %s is replaced by the page-specific title
+    template: "%s | Learn Next.js",
     default: "Learn Next.js",
   },
   description: "Learn Next.js and React with industry-standard projects.",
@@ -23,12 +23,12 @@ export const metadata: Metadata = {
     siteName: "Learn Next.js",
     type: "website",
     locale: "en_US",
-    // images: ['/og-default.jpg'],
+    // images: ["/og-default.jpg"],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@meenfax",
-    // images: ['/og-default.jpg'],
+    site: "meenfax",
+    // images: ["/og-default.jpg"],
   },
 };
 
@@ -38,10 +38,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${inter.variable} antialiased`}>
       <body className="bg-white min-h-screen flex flex-col">
         <Header />
-        <main className="container mx-auto px-4 py-8 text-black .flex-grow">
+        <main className="container mx-auto px-4 py-8 text-black flex-grow">
           {children}
         </main>
         <Footer />
