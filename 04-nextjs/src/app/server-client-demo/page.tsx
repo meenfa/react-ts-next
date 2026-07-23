@@ -1,7 +1,9 @@
-import ServerInfo from "../components/ServerInfo";
+import ClientClockInfo from "../components/ClientClockInfo";
+import ServerInfo from "../components/ServerClockInfo";
 
 export default function ServerClientDemo(){
     return(
-        <ServerInfo />
+        <div><ServerInfo />
+        <ClientClockInfo /></div>
     )
 }
