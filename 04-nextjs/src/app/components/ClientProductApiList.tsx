@@ -2,7 +2,7 @@ import React from 'react'
 
 const ClientProductApiList = () => {
   return (
-    <div>ClientProductApiList</div>
+    <div>Client Product API list</div>
   )
 }
 
