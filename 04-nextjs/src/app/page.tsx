@@ -45,7 +45,7 @@ export default async function Home() {
           </h2>
         ))} */}
         <div className="mt-2">
-          <h2>Client Component API Demo</h2>
+          {/* <h2>Client Component API Demo</h2> */}
           <ClientProductApiList />
         </div>
       </div>

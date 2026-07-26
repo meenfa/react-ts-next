@@ -1,8 +1,14 @@
-export const products=[
-    {id:1,name:"react course",category:"react"},
-    {id:2,name:"react course2",category:"react"},
-    {id:3,name:"next course",category:"next"},
-    {id:4,name:"next course2",category:"next"},
-    {id:5,name:"angular course",category:"angular"},
-    {id:6,name:"angular course2",category:"angular"},
+export interface Product {
+  id: number;
+  title: string;
+  category: string; 
+}
+
+export const products: Product[] = [
+  { id: 1, title: "React Course", category: "react" },
+  { id: 2, title: "React Course 2", category: "react" },
+  { id: 3, title: "Next Course", category: "next" },
+  { id: 4, title: "Next Course 2", category: "next" },
+  { id: 5, title: "Angular Course", category: "angular" },
+  { id: 6, title: "Angular Course 2", category: "angular" },
 ];
