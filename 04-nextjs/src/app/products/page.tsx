@@ -1,6 +1,7 @@
 import { products } from "@/lib/productsData";
 import Link from "next/link";
 import SearchInput from "../components/SearchInput";
+import ClientProductApiList from "../components/ClientProductApiList";
 
 interface ProductsPageProps {
   searchParams: {
@@ -25,7 +26,7 @@ export default async function ProductsPage({
 
   if (search) {
     filtered = filtered.filter((product) =>
-      product.name.toLowerCase().includes(search.toLowerCase()),
+      product.title.toLowerCase().includes(search.toLowerCase()),
     );
   }
 
@@ -33,10 +34,14 @@ export default async function ProductsPage({
     filtered = filtered.filter((product) => product.category === category);
   }
   if (sort === "asc") {
-    filtered = filtered.sort((a, b) => a.name.localeCompare(b.name));
+    filtered = filtered.sort((a, b) => a.title.localeCompare(b.title));
   }
   return (
     <div className="flex flex-col">
+      <div className="mt-2">
+          {/* <h2>Client Component API Demo</h2> */}
+          <ClientProductApiList />
+        </div>
       <h2 className="text-2xl font-black">Product Page</h2>
       <SearchInput />
       <div className="flex gap-2 cursor-pointer">
@@ -58,7 +63,7 @@ export default async function ProductsPage({
           filtered.map((e) => (
             <Link href={`/products/${e.id}`} key={e.id}>
               <div className="p-2 border w-48 rounded-lg">
-                <h2 className="text-black cursor-pointer">{e.name}</h2>
+                <h2 className="text-black cursor-pointer">{e.title}</h2>
               </div>
             </Link>
           ))
@@ -68,9 +73,6 @@ export default async function ProductsPage({
           </div>
         )}
       </div>
-      {/* {products.map((e) => (
-        <h2 className="text-xl">{e.name}</h2>
-      ))} */}
     </div>
   );
 }

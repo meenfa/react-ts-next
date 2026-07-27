@@ -9,9 +9,9 @@ type Product = {
   category: string;
 };
 
-// ?
 const ClientProductApiList = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [id, setId] = useState<number | "">("");
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
 
@@ -25,7 +25,7 @@ const ClientProductApiList = () => {
     }
   }
 
-  async function createPost() {
+  async function createProduct() {
     const res = await fetch("/api/products", {
       method: "POST",
       headers: {
@@ -48,17 +48,50 @@ const ClientProductApiList = () => {
     getProducts();
   }, []);
 
+  async function patchProduct() {
+    const res = await fetch(`/api/products/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title,
+      }),
+    });
+    setId("");
+    setTitle("");
+    getProducts();
+  }
+  // make for put
+
+  // for delete
+   async function deleteProducts() {
+      const res = await fetch(`/api/products/${id}`, {
+      method: "DELETE",
+    });
+    setId("");
+    getProducts();
+  }
+
+  
   return (
-    <div>
+    <div className="w-full">
       <h3>Client Product API list</h3>
-      <Button onClick={getProducts}>Get/Post API</Button>
+
       <div className="space-y-2 mb-4">
+        <input
+          placeholder="id for PATCH"
+          value={id}
+          onChange={(e) => setId(e.target.value ? Number(e.target.value) : "")}
+          className="border border-zinc-950 p-2 rounded"
+        />
+        <br />
         <input
           type="text"
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="border p-2 rounded"
+          className="border border-zinc-950 p-2 rounded"
         />
         <br />
         <input
@@ -66,11 +99,14 @@ const ClientProductApiList = () => {
           placeholder="category"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="border p-2 rounded"
+          className="border border-zinc-950 p-2 rounded"
         />
         <br />
         <div>
-          <Button onClick={createPost}>create product data(post)</Button>
+          <Button onClick={createProduct}>create product data(post)</Button>
+          <Button onClick={patchProduct}>Patch data</Button>
+          <Button onClick={getProducts}>Get/Post API</Button>
+          <Button onClick={deleteProducts}>Delete Product</Button>
         </div>
       </div>
 
@@ -78,5 +114,4 @@ const ClientProductApiList = () => {
     </div>
   );
 };
-
 export default ClientProductApiList;

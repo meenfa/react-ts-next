@@ -28,10 +28,10 @@ export default async function Home() {
   return (
     <div className="min-h-screen">
       <div>
-        {/* <h2 className="font-black">Posts from GET API</h2>
+        <h2 className="font-black">Posts from GET API</h2>
         {products.map((product:Product)=>(
-        <li key={product.id}>{product.name}</li>
-       ))} */}
+        <li key={product.id}>{product.title}</li>
+       ))}
         {/* <h2 className="font-black">Client Component Clock</h2>
 
         <Link href="/server-client-demo">
@@ -44,10 +44,9 @@ export default async function Home() {
             {e.title}
           </h2>
         ))} */}
-        <div className="mt-2">
-          {/* <h2>Client Component API Demo</h2> */}
+        {/* <div className="mt-2">
           <ClientProductApiList />
-        </div>
+        </div> */}
       </div>
 
       {/* <h2>This is the home page</h2> */}

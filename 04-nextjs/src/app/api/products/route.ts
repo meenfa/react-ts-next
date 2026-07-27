@@ -8,7 +8,6 @@ export async function GET() {
   return NextResponse.json(products);
 }
 
-
 // POST API
 export async function POST(request: Request) {
   const body = await request.json();
@@ -22,19 +21,11 @@ export async function POST(request: Request) {
   products.push(newProduct);
 
   return NextResponse.json(
-    {
-      message: "Product Created Successfully",
-    //   data: newProduct,
-      data:body,
-    },
+   newProduct,
     {
       status: 201,
     },
   );
 }
 
-// patch API
 
-export async function PATCH(request: Request) {
-    
-}
