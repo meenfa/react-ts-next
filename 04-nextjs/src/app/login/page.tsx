@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@base-ui/react";
+import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -25,17 +25,27 @@ export default function LoginPage() {
   }
 
   return (
-    <div>
-      <h1>Login to dashboard</h1>
-      <input
-        type="text"
-        placeholder="email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
+    <div className="flex items-center justify-center">
 
-      <input placeholder="pass" onChange={(e) => setPassword(e.target.value)} />
+    <div className="w-96">
+      <h1 className="mb-4 text-base font-semibold">Login to dashboard</h1>
+      <form onSubmit={handleLogin} className="flex flex-col gap-3">
+        <input
+          type="text"
+          placeholder="email"
+          onChange={(e) => setEmail(e.target.value)}
+          className="h-8 px-3 border border-gray-400 rounded-md"
+        />
 
-      <Button onClick={handleLogin}>Login</Button>
+        <input
+          placeholder="pass"
+          onChange={(e) => setPassword(e.target.value)}
+          className="h-8 border px-3 border-gray-400 rounded-md"
+        />
+
+        <Button onClick={handleLogin}>Login</Button>
+      </form>
+    </div>
     </div>
   );
 }

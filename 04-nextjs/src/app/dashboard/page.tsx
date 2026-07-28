@@ -1,21 +1,13 @@
-// "use client";
-// use client because 
-// useRouter is a hook which is a client side component, 
-// that only works in the browser
-// import { useRouter } from "next/navigation";
+import { cookies } from "next/headers";
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const cookieStore = await cookies();
+  const email = cookieStore.get("email")?.value;
 
-  // const router = useRouter();
-
-  // function handleClick(){
-  //   router.push("/");
-  // }
   return (
     <div>
       <h2>This is Dashboard page</h2>
-      
-      {/* <button onClick={handleClick}>Goto home page</button> */}
+      <p>Logged in email is {email}</p>
     </div>
   );
 }
