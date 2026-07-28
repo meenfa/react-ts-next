@@ -10,7 +10,7 @@ export default function RootLayout({
 
 <div className="flex min-h-screen">
     <Sidebar />
-    <main className=".flex-grow p-8">
+    <main className="flex-grow p-8">
         {children}
       </main>
 </div>    

@@ -9,18 +9,19 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  async function handleLogin(){
-    const res = await fetch(`/api/login`,{
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body: JSON.stringify({email, password}),
+  async function handleLogin() {
+    const res = await fetch(`/api/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
     });
 
-    if(res.ok){
-        router.push("/dashboard");
-    } else{
-        alert("Login failed")
-    }  
+    if (res.ok) {
+      router.replace("/dashboard");
+      router.refresh();
+    } else {
+      alert("Login failed");
+    }
   }
 
   return (
@@ -32,10 +33,7 @@ export default function LoginPage() {
         onChange={(e) => setEmail(e.target.value)}
       />
 
-      <input
-        placeholder="pass"
-        onChange={(e) => setPassword(e.target.value)}
-      />
+      <input placeholder="pass" onChange={(e) => setPassword(e.target.value)} />
 
       <Button onClick={handleLogin}>Login</Button>
     </div>
