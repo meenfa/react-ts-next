@@ -16,12 +16,13 @@ export default function LoginPage() {
       body: JSON.stringify({ email, password }),
     });
 
-    const data = await res.json();
+    // const data = await res.json();
  
-    if (data.token) {
-      localStorage.setItem("token",data.token);
+    // if (data.token) {
+    if(res.ok){
+      // localStorage.setItem("token",data.token);
       router.push("/dashboard");
-      // router.refresh();
+      router.refresh();
     } else {
       alert("Login failed,Invalid Credentials");
     }

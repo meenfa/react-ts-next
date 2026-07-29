@@ -1,14 +1,22 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { verifyToken } from "./lib/jwt";
 
 export function proxy(request: NextRequest) {
-  const auth = request.cookies.get("auth")?.value;
+  const token = request.cookies.get("auth")?.value;
 
   // if(!auth && request.nextUrl.pathname.startsWith("/dashboard")){
-  if (!auth) {
+  if (!token) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
-  return NextResponse.next();
+  try {
+    verifyToken(token);
+
+    return NextResponse.next();
+  } catch {
+    // incase if jwt is invalid or expired
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
 }
 
 export const config = {

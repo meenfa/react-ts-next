@@ -1,17 +1,21 @@
-import { NextResponse } from "next/server";
+
+import { NextRequest, NextResponse } from "next/server";
 import { verifyToken } from "@/lib/jwt";
 
-export function GET(request: Request) {
+export function GET(request: NextRequest) {
   // Auth Bearer token in auth
-  const authHeader = request.headers.get("authorization");
+  // const authHeader = request.headers.get("authorization");
+
+  // for http only cookie
+  const token = request.cookies.get("auth")?.value;
 
   // if not authHeader
-  if (!authHeader) {
-    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-  }
+  // if (!authHeader) {
+  //   return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+  // }
 
   // if authHeader(bearer<token>)
-  const token = authHeader.split(" ")[1];
+  // const token = authHeader.split(" ")[1];
 
   // Check if the token exists
   if (!token) {
@@ -20,6 +24,7 @@ export function GET(request: Request) {
       { status: 401 }
     );
   }
+
   // try catch
   try {
     // Verify the JWT

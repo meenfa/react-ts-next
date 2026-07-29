@@ -9,9 +9,17 @@ export async function POST(request: Request) {
     const token= generateToken({email});
 
     const response = NextResponse.json({
-      message: "Login Successful", token,
+      message: "Login Successful", 
+      // token,
     });
 
+    //for http only cookies
+     response.cookies.set("auth", token, {
+      httpOnly: true,
+      path: "/",
+      sameSite: "lax",
+    });
+    
     //set auth cookie
     // response.cookies.set("auth", "true", {
     //   httpOnly: true,
@@ -24,11 +32,7 @@ export async function POST(request: Request) {
     //   path: "/",
     // });
 
-    //  response.cookies.set("auth", token, {
-    //   httpOnly: true,
-    //   path: "/",
-    //   sameSite: "lax",
-    // });
+    
 
     return response;
   }
