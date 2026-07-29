@@ -16,8 +16,11 @@ export default function LoginPage() {
       body: JSON.stringify({ email, password }),
     });
 
-    if (res.ok) {
-      router.replace("/dashboard");
+    const data = await res.json();
+ 
+    if (data.token) {
+      localStorage.setItem("token",data.token);
+      router.push("/dashboard");
       router.refresh();
     } else {
       alert("Login failed");
