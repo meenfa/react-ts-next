@@ -18,13 +18,27 @@ export default function DashboardPage() {
       return;
     }
 
+    // fetch("/api/profile", {
+    //   headers: {
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    // })
     fetch("/api/profile", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    })
-      .then((res) => res.json())
-      .then((data) => setData(data));
+    }).then(async (res) => {
+      if (res.status === 401) {
+        localStorage.removeItem("token");
+        router.push("/login");
+        return;
+      }
+
+      const data = await res.json();
+      setData(data);
+    });
+    // .then((res) => res.json())
+    // .then((data) => setData(data));
   }, []);
 
   function handleLogout() {
