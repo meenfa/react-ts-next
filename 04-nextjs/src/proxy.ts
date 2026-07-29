@@ -1,17 +1,16 @@
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
-export function proxy(request:NextRequest){
-    // const auth = request.cookies.get("auth");
-    const auth = request.cookies.get("auth")?.value;
+export function proxy(request: NextRequest) {
+  const auth = request.cookies.get("auth")?.value;
 
-    // if(!auth && request.nextUrl.pathname.startsWith("/dashboard")){
-         if (!auth) {
-        return NextResponse.redirect(new URL("/login", request.url));
-    }
-  return NextResponse.next();  
+  // if(!auth && request.nextUrl.pathname.startsWith("/dashboard")){
+  if (!auth) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
+  return NextResponse.next();
 }
 
 export const config = {
-    matcher : ["/dashboard/:path*"]
-}
+  matcher: ["/dashboard/:path*"],
+};
