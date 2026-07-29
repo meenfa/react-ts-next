@@ -21,9 +21,9 @@ export default function LoginPage() {
     if (data.token) {
       localStorage.setItem("token",data.token);
       router.push("/dashboard");
-      router.refresh();
+      // router.refresh();
     } else {
-      alert("Login failed");
+      alert("Login failed,Invalid Credentials");
     }
   }
 
@@ -32,7 +32,7 @@ export default function LoginPage() {
 
     <div className="w-96">
       <h1 className="mb-4 text-base font-semibold">Login to dashboard</h1>
-      <form onSubmit={handleLogin} className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3">
         <input
           type="text"
           placeholder="email"
@@ -47,7 +47,7 @@ export default function LoginPage() {
         />
 
         <Button onClick={handleLogin}>Login</Button>
-      </form>
+      </div>
     </div>
     </div>
   );
