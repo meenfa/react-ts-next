@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 
+// reading secrert key from env.local
 const secret = process.env.JWT_SECRET;
 
 if (!secret) {
