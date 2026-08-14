@@ -1,16 +1,13 @@
 import {MongoClient} from "mongodb"
 
-const uri = process.env.Mongodb.MONGODB_URI;
+const uri = process.env.MONGODB_URI;
 
-let client;
-let clientPromise;
-
-if(!process.env.Mongodb.MONGODB_URI){
+if(!uri){
     throw new Error("Please add Mongodb URI")
 }
 
 // mongo client->mongodb bata connecn establish garna mongo client use huncha
-client = new MongoClient(uri);
-clientPromise = client.connect();
+const client = new MongoClient(uri);
+const clientPromise = client.connect();
 
 export default clientPromise;
